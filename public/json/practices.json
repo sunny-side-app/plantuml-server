@@ -1,0 +1,125 @@
+[
+    {
+        "id": 1,
+        "title": "基本的な例",
+        "theme": "シーケンス図",
+        "uml": "@startuml\nAlice -> Bob: Authentication Request\nBob --> Alice: Authentication Response\n\nAlice -> Bob: Another authentication Request\nAlice <-- Bob: Another authentication Response\n@enduml"
+    },
+    {
+        "id": 2,
+        "title": "分類子の宣言",
+        "theme": "シーケンス図",
+        "uml": "@startuml\nparticipant Participant as Foo\nactor       Actor       as Foo1\nboundary    Boundary    as Foo2\ncontrol     Control     as Foo3\nentity      Entity      as Foo4\ndatabase    Database    as Foo5\ncollections Collections as Foo6\nqueue       Queue       as Foo7\nFoo -> Foo1 : To actor\nFoo -> Foo2 : To boundary\nFoo -> Foo3 : To control\nFoo -> Foo4 : To entity\nFoo -> Foo5 : To database\nFoo -> Foo6 : To collections\nFoo -> Foo7: To queue\n@enduml"
+    },
+    {
+        "id": 3,
+        "title": "矢印の見た目を変える",
+        "theme": "シーケンス図",
+        "uml": "@startuml\nBob ->x Alice\nBob -> Alice\nBob ->> Alice\nBob -\\ Alice\nBob \\\\- Alice\nBob //-- Alice\n\nBob ->o Alice\nBob o\\\\-- Alice\n\nBob <-> Alice\nBob <->o Alice\n@enduml"
+    },
+    {
+        "id": 4,
+        "title": "すべての分類子にまたがるノート",
+        "theme": "シーケンス図",
+        "uml": "@startuml\nAlice->Bob:m1\nBob->Charlie:m2\nnote over Alice, Charlie: Old method for note over all part. with:\\n \"\"note over //FirstPart, LastPart//\"\".\nnote across: New method with:\\n\"\"note across\"\"\nBob->Alice\nhnote across:Note across all part.\n@enduml"
+    },
+    {
+        "id": 5,
+        "title": "ライフラインの活性化",
+        "theme": "シーケンス図",
+        "uml": "@startuml\nautoactivate on\nalice -> bob : hello\nbob -> bob : self call\nbill -> bob #005500 : hello from thread 2\nbob -> george ** : create\nreturn done in thread 2\nreturn rc\nbob -> george !! : delete\nreturn success\n\n@enduml"
+    },
+    {
+        "id": 6,
+        "title": "ユースケースの説明",
+        "theme": "ユースケース図",
+        "uml": "@startuml\nusecase UC1 as \"You can use\nseveral lines to define your usecase.\nYou can also use separators.\n--\nSeveral separators are possible.\n==\nAnd you can add titles:\n..Conclusion..\nThis allows large description.\"\n@enduml"
+    },
+    {
+        "id": 7,
+        "title": "パッケージ",
+        "theme": "ユースケース図",
+        "uml": "@startuml\nleft to right direction\nactor Guest as g\npackage Professional {\n  actor Chef as c\n  actor \"Food Critic\" as fc\n}\npackage Restaurant {\n  usecase \"Eat Food\" as UC1\n  usecase \"Pay for Food\" as UC2\n  usecase \"Drink\" as UC3\n  usecase \"Review\" as UC4\n}\nfc --> UC4\ng --> UC1\ng --> UC2\ng --> UC3\n@enduml"
+    },
+    {
+        "id": 8,
+        "title": "ノートの使用方法",
+        "theme": "ユースケース図",
+        "uml": "@startuml\n:Main Admin: as Admin\n(Use the application) as (Use)\n\nUser -> (Start)\nUser --> (Use)\n\nAdmin ---> (Use)\n\nnote right of Admin : This is an example.\n\nnote right of (Use)\n  A note can also\n  be on several lines\nend note\n\nnote \"This note is connected\\nto several objects.\" as N2\n(Start) .. N2\nN2 .. (Use)\n@enduml"
+    },
+    {
+        "id": 9,
+        "title": "宣言する要素",
+        "theme": "クラス図",
+        "uml": "@startuml\nabstract        abstract\nabstract class  \"abstract class\"\nannotation      annotation\ncircle          circle\n()              circle_short_form\nclass           class\nclass           class_stereo  <<stereotype>>\ndiamond         diamond\n<>              diamond_short_form\nentity          entity\nenum            enum\nexception       exception\ninterface       interface\nmetaclass       metaclass\nprotocol        protocol\nstereotype      stereotype\nstruct          struct\n@enduml"
+        
+    },
+    {
+        "id": 10,
+        "title": "クラス間の関係",
+        "theme": "クラス図",
+        "uml": "@startuml\nClass01 <|-- Class02\nClass03 *-- Class04\nClass05 o-- Class06\nClass07 .. Class08\nClass09 -- Class10\nClass11 <|.. Class12\nClass13 --> Class14\nClass15 ..> Class16\nClass17 ..|> Class18\nClass19 <--* Class20\nClass21 #-- Class22\nClass23 x-- Class24\nClass25 }-- Class26\nClass27 +-- Class28\nClass29 ^-- Class30\n@enduml"
+    }
+    ,
+    {
+        "id": 11,
+        "title": "Abstract と Static",
+        "theme": "クラス図",
+        "uml": "@startuml\nclass Dummy {\n    {static} String id\n    {abstract} void methods()\n}\n@enduml"
+    },
+    {
+        "id": 12,
+        "title": "抽象クラスとインターフェース",
+        "theme": "クラス図",
+        "uml": "@startuml\n\nabstract class AbstractList\nabstract AbstractCollection\ninterface List\ninterface Collection\n\nList <|-- AbstractList\nCollection <|-- AbstractCollection\n\nCollection <|- List\nAbstractCollection <|- AbstractList\nAbstractList <|-- ArrayList\n\nclass ArrayList {\n    Object[] elementData\n    size()\n}\n\nenum TimeUnit {\n    DAYS\n    HOURS\n    MINUTES\n}\n\nannotation SuppressWarnings\n\nannotation Annotation {\n    annotation with members\n    String foo()\n    String bar()\n}\n\n@enduml"
+    },
+    {
+        "id": 13,
+        "title": "継承(extends)と実装(implements)",
+        "theme": "クラス図",
+        "uml": "@startuml\nclass ArrayList implements List\nclass ArrayList extends AbstractList\n@enduml"
+    },
+    {
+        "id": 14,
+        "title": "開始/終了",
+        "theme": "アクティビティ図",
+        "uml": "@startuml\nstart\n:Hello world;\n:This is defined on\nseveral **lines**;\nstop\n@enduml"
+    },
+    {
+        "id": 15,
+        "title": "条件文",
+        "theme": "アクティビティ図",
+        "uml": "@startuml\nstart\n\nif (Graphviz installed?) then (yes)\n  :process all\\ndiagrams;\nelse (no)\n  :process only\n  __sequence__ and __activity__ diagrams;\nendif\n\nstop\n\n@enduml\n"
+    },
+    {
+        "id": 16,
+        "title": "完全な例",
+        "theme": "アクティビティ図",
+        "uml": "@startuml\n\nstart\n:ClickServlet.handleRequest();\n:new page;\nif (Page.onSecurityCheck) then (true)\n  :Page.onInit();\n  if (isForward?) then (no)\n    :Process controls;\n    if (continue processing?) then (no)\n      stop\n    endif\n\n    if (isPost?) then (yes)\n      :Page.onPost();\n    else (no)\n      :Page.onGet();\n    endif\n    :Page.onRender();\n  endif\nelse (false)\nendif\n\nif (do redirect?) then (yes)\n  :redirect process;\nelse\n  if (do forward?) then (yes)\n    :Forward request;\n  else (no)\n    :Render page template;\n  endif\nendif\n\nstop\n\n@enduml"
+    },
+    {
+        "id": 17,
+        "title": "簡単なステート",
+        "theme": "状態図",
+        "uml": "@startuml\n\n[*] --> State1\nState1 --> [*]\nState1 : this is a string\nState1 : this is another string\n\nState1 -> State2\nState2 --> [*]\n\n@enduml"
+        
+    },
+    {
+        "id": 18,
+        "title": "フォーク(非同期実行)",
+        "theme": "状態図",
+        "uml": "@startuml\nstate fork_state <<fork>>\n[*] --> fork_state\nfork_state --> State2\nfork_state --> State3\n\nstate join_state <<join>>\nState2 --> join_state\nState3 --> join_state\njoin_state --> State4\nState4 --> [*]\n\n@enduml"        
+    },
+    {
+        "id": 19,
+        "title": "条件",
+        "theme": "状態図",
+        "uml": "@startuml\nstate \"Req(Id)\" as ReqId <<sdlreceive>>\nstate \"Minor(Id)\" as MinorId\nstate \"Major(Id)\" as MajorId\n\nstate c <<choice>>\n\nIdle --> ReqId\nReqId --> c\nc --> MinorId : [Id <= 10]\nc --> MajorId : [Id > 10]\n@enduml"
+    },
+    {
+        "id": 20,
+        "title": "全ステレオタイプの例(choice,fork,join,end)",
+        "theme": "状態図",
+        "uml": "@startuml\nstate choice1 <<choice>>\nstate fork1   <<fork>>\nstate join2   <<join>>\nstate end3    <<end>>\n\n[*]     --> choice1 : from start\\nto choice\nchoice1 --> fork1   : from choice\\nto fork\nchoice1 --> join2   : from choice\\nto join\nchoice1 --> end3    : from choice\\nto end\n\nfork1   ---> State1 : from fork\\nto state\nfork1   --> State2  : from fork\\nto state\n\nState2  --> join2   : from state\\nto join\nState1  --> [*]     : from state\\nto end\n\njoin2   --> [*]     : from join\\nto end\n@enduml\n"        
+    }
+]
