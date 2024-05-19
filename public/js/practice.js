@@ -22,6 +22,8 @@ async function postPreviewData(url = "", data = {}) {
   
 const getContentBlob = async (url) => {
     try {
+        // Ensure the URL uses HTTPS
+        url = url.replace(/^http:\/\//i, 'https://');
         const res = await fetch(url);
         const blob = await res.blob();
         return blob;
@@ -33,6 +35,8 @@ const getContentBlob = async (url) => {
 
 const getAscii = async (url) => {
   try {
+      // Ensure the URL uses HTTPS
+      url = url.replace(/^http:\/\//i, 'https://');
       const response = await fetch(url);
       const data = await response.text();
       return data;
@@ -43,6 +47,8 @@ const getAscii = async (url) => {
 
 const getJson = async (url) => {
   try {
+      // Ensure the URL uses HTTPS
+      url = url.replace(/^http:\/\//i, 'https://');
       const response = await fetch(url);
       const data = await response.json();
       return data;
